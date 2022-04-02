@@ -1,9 +1,12 @@
 
 
-import React from 'react';
+import React, { useState } from 'react';
 import './Cita.css';
 
+
 import observers from '../../shared/observers';
+
+
 
 
 function Cita(props){
@@ -11,6 +14,8 @@ function Cita(props){
   const nombreApellidoCliente=`${props.cliente.nombre}${props.cliente.apellido}`;
   const nombreApellidoVeterinario=`${props.veterinario.nombre}${props.veterinario.apellido}`;
   let nameLastNameClient=''
+
+  const [fechaCita, setFechaCita] = useState("2018-06-12T19:30");
 
   const updateData=(event)=>{
     console.log("usado para actualizar la data de la card", props)
@@ -23,6 +28,8 @@ function Cita(props){
 
   const handleDateTimeChange=(field, e) => {
     console.log(field,e.target.value);
+
+    setFechaCita(e.target.value)
   };
 
   return(
@@ -63,7 +70,7 @@ function Cita(props){
 
 
        <input type="datetime-local" id="meeting-time"
-       name="meeting-time" value="2018-06-12T19:30" onChange={e => handleDateTimeChange('datetime', e)}/>
+       name="meeting-time" value={fechaCita} onChange={e => handleDateTimeChange('datetime', e)}/>
 
 
        </div>

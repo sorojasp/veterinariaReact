@@ -174,12 +174,19 @@ observers.eliminarCitaSubs.observable.subscribe(idCita=>{
 
 })
 
+const elementsCollect=[{name:"Juan"},
+{name:"Alberto"}];
 
 
 
   return (
+
+
+
     <div className="App" style={{padding: "5px"}}>
-    <h2>Lista de citas</h2>
+    {true?<h2>Lista de citas</h2>:null}
+
+    
 
     {
   dataDeCitas.citas.map((element,index)=>{
