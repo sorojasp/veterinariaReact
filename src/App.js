@@ -3,10 +3,15 @@ import './App.css';
 import React, { useState,useEffect } from 'react';
 
 
-import Cita  from './componentes/Cita/Cita.js'
+import Cita  from './componentes/Cita/Cita.js';
+
+import observers from './shared/observers';
+
+
 
 function App() {
 
+let i=0
   const [dataDeCitas, setDataDeCita] = useState({
     citas:[]
   });
@@ -155,6 +160,23 @@ const updateData=()=>{
 }
 
 
+const deleteCita=()=>{
+  console.log("deleteCita")
+}
+
+observers.eliminarCitaSubs.observable.subscribe(idCita=>{
+ i++
+  console.log("captura data emitida:",i);
+  console.log(dataDeCitas.citas.filter(cita=>cita.id_cita !=idCita))
+  setDataDeCita({citas:dataDeCitas.citas.filter(cita=>cita.id_cita !=idCita)})
+
+  //*aquí tienes que montar tu servicio de eliminar**//
+
+})
+
+
+
+
   return (
     <div className="App" style={{padding: "5px"}}>
     <h2>Lista de citas</h2>
@@ -168,7 +190,7 @@ const updateData=()=>{
     veterinario={{nombre:element.nombre_veterinario, apellido:element.apellido_veterinario}}
     key={index}
     id={element.id_cita}
-    eventDelete={updateData}
+
     />
 
   })

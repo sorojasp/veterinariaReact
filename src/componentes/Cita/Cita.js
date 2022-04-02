@@ -3,8 +3,10 @@
 import React from 'react';
 import './Cita.css';
 
+import observers from '../../shared/observers';
 
-function Cita(props, {eventDelete}){
+
+function Cita(props){
 
   const nombreApellidoCliente=`${props.cliente.nombre}${props.cliente.apellido}`;
   const nombreApellidoVeterinario=`${props.veterinario.nombre}${props.veterinario.apellido}`;
@@ -59,7 +61,7 @@ function Cita(props, {eventDelete}){
 
 
        <button onClick={updateData}>actualizar</button>
-       <button onClick={eventDelete}>eliminar</button>
+       <button onClick={() => observers.eliminarCitaSubs.function(`${props.id}`)} >eliminar</button>
 
 
 
