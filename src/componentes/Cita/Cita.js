@@ -21,6 +21,10 @@ function Cita(props){
     console.log("new name", nameLastNameClient)
   }
 
+  const handleDateTimeChange=(field, e) => {
+    console.log(field,e.target.value);
+  };
+
   return(
     <div className="cita-card">
 
@@ -56,7 +60,12 @@ function Cita(props){
       <p>Cita</p>
 
        <div>
-       <input placeholder={props.cita.fecha}></input>
+
+
+       <input type="datetime-local" id="meeting-time"
+       name="meeting-time" value="2018-06-12T19:30" onChange={e => handleDateTimeChange('datetime', e)}/>
+
+
        </div>
 
 
